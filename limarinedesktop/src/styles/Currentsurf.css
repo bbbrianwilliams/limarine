@@ -1,0 +1,13 @@
+.surf-info-container {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: aliceblue;
+}
+
+.surf-height, .swell-info, .tide-info {
+    text-align: center;
+}
+
+.current-conditions, .current-temp, .current-wind {
+    text-align: center;
+}

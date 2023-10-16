@@ -1,0 +1,15 @@
+.current-conditions-container {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.current-wind span {
+    height: 50px;
+}
+
+
+
+.weather-icon {
+    height: 4em;
+}
