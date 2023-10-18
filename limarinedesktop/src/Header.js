@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import './styles/Header.css'
-import { lbCoords, gilgoCoords, mtkCoords } from "./coordinates";
-import { asyncPaginate } from "react-select-async-paginate"
+import { spotData } from "./coordinates";
+
 
 
 const Header = ({onClickChange}) => {
 
+  const handleClick = (spot) => {
+
+    onClickChange(spot)
+
   
-
-  const handleOnChange = (e) => {
-    onClickChange(e.target)
-
   }
 
   return (
@@ -25,9 +25,10 @@ const Header = ({onClickChange}) => {
   
     <div className='navbar-container'>
     <nav>
-        <button className='lb-btn' value={lbCoords} onClick={handleOnChange}>Long Beach</button>
-        <button className='gilgo-btn' value={gilgoCoords} onClick={handleOnChange}>Gilgo</button>
-        <button className='mtk-btn' value={mtkCoords} onClick={handleOnChange}>Montauk</button>
+        <button className='rkwy-btn' onClick={(e) => handleClick(spotData[0])}>Rockaway</button>
+        <button className='lb-btn' onClick={(e) => handleClick(spotData[1])}>Long Beach</button>
+        <button className='gilgo-btn' onClick={(e) => handleClick(spotData[2])}>Gilgo</button>
+        <button className='mtk-btn' onClick={(e) => handleClick(spotData[3])}>Montauk</button>
     </nav>
     </div>
     

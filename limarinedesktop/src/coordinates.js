@@ -1,8 +1,35 @@
-    export const gilgoCoords = '40.618 -73.397';
+    //export const gilgoCoords = '40.618 -73.397';
 
-    export const lbCoords = '40.5884 -73.6579';
+    export const spotData = [ 
+    {
+        id: 'ROCKAWAY',
+        lat: '40.5801',
+        lon: '-73.8363',
+        stationId: 'NYH1905'
+    },
+        
+    {
+        id: 'LONG_BEACH',
+        lat: '40.5884',
+        lon: '-73.6579',
+        stationId: '8516663'
+    },
 
-    export const mtkCoords = '41.0359 -71.9545';
+    {
+        id: 'GILGO',
+        lat: '40.618',
+        lon: '-73.397',
+        stationId: '8515764'
+    },
 
-    export const gilgoLat = '40.618'
-    export const gilgoLon = '-73.397'
+    {
+        id: 'MONTAUK',
+        lat: '41.0359',
+        lon: '-71.9545',
+        stationId: '8510321'
+    }]
+
+    
+        
+
+    

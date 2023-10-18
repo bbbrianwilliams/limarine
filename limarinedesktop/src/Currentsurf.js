@@ -12,7 +12,7 @@ const Currentsurf = ({data}) => {
             <div className='info-header'>
                 <h2>Surf Height</h2>
             </div>
-            <p>{data.hourly.wave_height[currentHour].toFixed(1)}FT</p>
+            {<p>{data.hourly.wave_height[currentHour].toFixed(1)}FT</p>}
         </div>
         <div className='swell-info'>
             <div className='info-header'>
