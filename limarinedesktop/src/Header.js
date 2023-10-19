@@ -4,23 +4,27 @@ import { spotData } from "./coordinates";
 
 
 
+
 const Header = ({onClickChange}) => {
+
+const [active, setActive] = useState(false)
 
   const handleClick = (spot) => {
 
     onClickChange(spot)
 
-  
+    setActive(!active)
+    
   }
 
   return (
     <>
     <div className='header-container'>
-        <div className='left-section'>
-            <h1>LI Marine</h1>
+        <div className='left-section'></div>
+        <div className='middle-section'>
+          <h1>LI Marine</h1>
         </div>
-        <div className='middle-section'></div>
-        <div className='right-section'>Right</div>
+        <div className='right-section'></div>
     </div>
   
     <div className='navbar-container'>

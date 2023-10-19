@@ -1,14 +1,16 @@
-    //export const gilgoCoords = '40.618 -73.397';
+
 
     export const spotData = [ 
     {
+        name: 'Rockaway',
         id: 'ROCKAWAY',
         lat: '40.5801',
         lon: '-73.8363',
-        stationId: 'NYH1905'
+        stationId: '8516881'
     },
         
     {
+        name: 'Long Beach',
         id: 'LONG_BEACH',
         lat: '40.5884',
         lon: '-73.6579',
@@ -16,6 +18,7 @@
     },
 
     {
+        name: 'Gilgo Beach',
         id: 'GILGO',
         lat: '40.618',
         lon: '-73.397',
@@ -23,10 +26,11 @@
     },
 
     {
+        name: 'Montauk',
         id: 'MONTAUK',
         lat: '41.0359',
         lon: '-71.9545',
-        stationId: '8510321'
+        stationId: '8510560'
     }]
 
     

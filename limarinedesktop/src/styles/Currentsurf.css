@@ -11,3 +11,25 @@
 .current-conditions, .current-temp, .current-wind {
     text-align: center;
 }
+
+.current-hi-lo {
+    margin-top: -30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.daily-current, .daily-high-tide {
+    margin-right: 25px;
+}
+
+
+
+.daily-current, .daily-low-tide, .daily-high-tide {
+    margin-top: -10px;
+}
+
+.daily-current p, .daily-low-tide p, .daily-high-tide p {
+    margin-top: -15px;
+}
+
