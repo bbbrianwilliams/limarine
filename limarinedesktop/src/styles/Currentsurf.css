@@ -1,11 +1,21 @@
+
+
 .surf-info-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color: aliceblue;
+}
+
+.surf-height {
+    margin-left: 50px;
 }
 
 .surf-height, .swell-info, .tide-info {
     text-align: center;
+}
+
+.surf-height, .swell-info {
+    margin-right: 55px;
 }
 
 .current-conditions, .current-temp, .current-wind {
@@ -19,14 +29,18 @@
     align-items: center;
 }
 
+
 .daily-current, .daily-high-tide {
     margin-right: 25px;
 }
 
 
-
-.daily-current, .daily-low-tide, .daily-high-tide {
+.daily-low-tide, .daily-high-tide {
     margin-top: -10px;
+}
+
+.daily-current {
+    margin-top: -50px;
 }
 
 .daily-current p, .daily-low-tide p, .daily-high-tide p {

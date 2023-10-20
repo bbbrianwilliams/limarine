@@ -28,8 +28,8 @@
     {
         name: 'Montauk',
         id: 'MONTAUK',
-        lat: '41.0359',
-        lon: '-71.9545',
+        lat: '41.036',
+        lon: '-71.954',
         stationId: '8510560'
     }]
 

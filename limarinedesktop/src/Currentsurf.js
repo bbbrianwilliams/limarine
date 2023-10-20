@@ -7,9 +7,28 @@ const Currentsurf = ({data, tideData, tideHiLo}) => {
     let currentHour = currentTime.getHours();
 
     
+    const convertTime = (t) => {
+        t = t.split(":");
+        let h = Number(t[0]);
+        let m = Number(t[1]);
 
-   
+        let timeValue;
 
+        if (h > 0 && h <= 12){
+            timeValue = h;
+        } else if(h > 12) {
+            timeValue = (h - 12);
+        } else if (h == 0) {
+            timeValue = "12";
+        }
+
+        timeValue += (m < 10 ) ? ":0" + m : ":" + m;
+        timeValue += (h >= 12) ? " PM" : " AM";
+
+        return timeValue;
+    }
+    
+    
   return (
     <div className='surf-info-container'>
         <div className='surf-height'>
@@ -31,24 +50,24 @@ const Currentsurf = ({data, tideData, tideHiLo}) => {
             <div className='current-hi-lo'>
                 <div className='daily-current'>
                     <h5>Current</h5>
-                    {<p>{tideData.predictions[currentHour].v} FT</p>}
-                    {<p>{tideData.predictions[currentHour].t}</p>}
+                    <p><strong>{Number(tideData.predictions[currentHour].v).toFixed(1)} FT</strong></p>
+                    <p>{convertTime((tideData.predictions[currentHour].t).substr(10))}</p>
                 </div>
                 <div className='daily-high-tide'>
                     <h5>High</h5>
-                    <p>{tideHiLo.predictions[0].v} FT</p>
-                    <p>{tideHiLo.predictions[0].t}</p>
+                    <p><strong>{Number(tideHiLo.predictions[0].v).toFixed(1)} FT</strong></p>
+                    <p>{convertTime((tideHiLo.predictions[0].t).substr(10))}</p>
 
-                    <p>{tideHiLo.predictions[2].v} FT</p>
-                    <p>{tideHiLo.predictions[2].t}</p>
+                    <p><strong>{Number(tideHiLo.predictions[2].v).toFixed(1)} FT</strong></p>
+                    <p>{convertTime((tideHiLo.predictions[2].t).substr(10))}</p>
                 </div>
                 <div className='daily-low-tide'>
                     <h5>Low</h5>
-                    <p>{tideHiLo.predictions[1].v} FT</p>      
-                    <p>{tideHiLo.predictions[1].t}</p>
+                    <p><strong>{Number(tideHiLo.predictions[1].v).toFixed(1)} FT</strong></p>      
+                    <p>{convertTime((tideHiLo.predictions[1].t).substr(10))}</p>
 
-                    <p>{tideHiLo.predictions[3].v} FT</p>      
-                    <p>{tideHiLo.predictions[3].t}</p>      
+                    <p><strong>{Number(tideHiLo.predictions[3].v).toFixed(1)} FT</strong></p>      
+                    <p>{convertTime((tideHiLo.predictions[3].t).substr(10))}</p>      
                 </div>
             </div>
         </div>

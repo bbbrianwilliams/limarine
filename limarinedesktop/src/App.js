@@ -50,9 +50,9 @@ function App() {
 
   }
 
-  /* console.log(tideData);
+  //console.log(tideData);
 
-  console.log(tideHiLo);  */
+  console.log(currentWeather);
 
   
 
