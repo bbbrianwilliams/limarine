@@ -1,4 +1,4 @@
-
+//Array of spot objects
 
     export const spotData = [ 
     {
@@ -22,7 +22,7 @@
         id: 'GILGO',
         lat: '40.618',
         lon: '-73.397',
-        stationId: '8515764'
+        stationId: '8516663'
     },
 
     {

@@ -1,7 +1,8 @@
 import React from 'react'
 import './styles/Currentsurf.css'
+import { spotData } from './Spotsdata';
 
-const Currentsurf = ({data, tideData, tideHiLo}) => {
+const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
 
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
@@ -30,18 +31,20 @@ const Currentsurf = ({data, tideData, tideHiLo}) => {
     
     
   return (
+    <>
+    <h1 className='spot-header'>{nameData}</h1>
     <div className='surf-info-container'>
         <div className='surf-height'>
             <div className='info-header'>
                 <h2>Surf Height</h2>
             </div>
-            {<p>{data.hourly.wave_height[currentHour].toFixed(1)}FT</p>}
+            <p>{surfData.hourly.wave_height[currentHour].toFixed(1)}ft</p>
         </div>
         <div className='swell-info'>
             <div className='info-header'>
                 <h2>Swell Info</h2>
             </div>
-            <p>{data.hourly.swell_wave_height[currentHour].toFixed(1)} ft @ {Math.round(data.hourly.swell_wave_period[currentHour])}s from {data.hourly.swell_wave_direction[currentHour]}°</p>
+            <p>{surfData.hourly.swell_wave_height[currentHour].toFixed(1)}ft @ {Math.round(surfData.hourly.swell_wave_period[currentHour])}s from {surfData.hourly.swell_wave_direction[currentHour]}°</p>
         </div>
         <div className='tide-info'>
             <div className='info-header'>
@@ -50,28 +53,31 @@ const Currentsurf = ({data, tideData, tideHiLo}) => {
             <div className='current-hi-lo'>
                 <div className='daily-current'>
                     <h5>Current</h5>
-                    <p><strong>{Number(tideData.predictions[currentHour].v).toFixed(1)} FT</strong></p>
+                    <p><strong>{Number(tideData.predictions[currentHour].v).toFixed(1)}ft</strong></p>
+                    <p>as of</p>
                     <p>{convertTime((tideData.predictions[currentHour].t).substr(10))}</p>
                 </div>
                 <div className='daily-high-tide'>
                     <h5>High</h5>
-                    <p><strong>{Number(tideHiLo.predictions[0].v).toFixed(1)} FT</strong></p>
+                    <p><strong>{Number(tideHiLo.predictions[0].v).toFixed(1)}ft</strong></p>
                     <p>{convertTime((tideHiLo.predictions[0].t).substr(10))}</p>
 
-                    <p><strong>{Number(tideHiLo.predictions[2].v).toFixed(1)} FT</strong></p>
+                    <p><strong>{Number(tideHiLo.predictions[2].v).toFixed(1)}ft</strong></p>
                     <p>{convertTime((tideHiLo.predictions[2].t).substr(10))}</p>
                 </div>
                 <div className='daily-low-tide'>
                     <h5>Low</h5>
-                    <p><strong>{Number(tideHiLo.predictions[1].v).toFixed(1)} FT</strong></p>      
+                    <p><strong>{Number(tideHiLo.predictions[1].v).toFixed(1)}ft</strong></p>      
                     <p>{convertTime((tideHiLo.predictions[1].t).substr(10))}</p>
 
-                    <p><strong>{Number(tideHiLo.predictions[3].v).toFixed(1)} FT</strong></p>      
+                    <p><strong>{Number(tideHiLo.predictions[3].v).toFixed(1)}ft</strong></p>      
                     <p>{convertTime((tideHiLo.predictions[3].t).substr(10))}</p>      
                 </div>
             </div>
         </div>
     </div>
+    </>
+    
   )
 }
 

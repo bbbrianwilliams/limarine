@@ -1,4 +1,6 @@
-
+.spot-header {
+    text-align: center;
+}
 
 .surf-info-container {
     display: flex;
@@ -8,6 +10,12 @@
 
 .surf-height {
     margin-left: 50px;
+}
+
+.surf-height p {
+    margin-top: 25px;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .surf-height, .swell-info, .tide-info {
@@ -40,7 +48,7 @@
 }
 
 .daily-current {
-    margin-top: -50px;
+    margin-top: -30px;
 }
 
 .daily-current p, .daily-low-tide p, .daily-high-tide p {

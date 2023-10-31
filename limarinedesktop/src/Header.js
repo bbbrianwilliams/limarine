@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import './styles/Header.css'
-import { spotData } from "./coordinates";
-
-
+import { spotData } from "./Spotsdata";
 
 
 const Header = ({onClickChange}) => {

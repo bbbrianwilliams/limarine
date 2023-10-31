@@ -1,7 +1,11 @@
 .current-conditions-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     
+}
+
+.current-wind {
+    margin-left: 175px;
 }
 
 .current-wind span {

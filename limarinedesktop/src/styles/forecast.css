@@ -1,0 +1,42 @@
+.forecast-container {
+    justify-content: space-between;
+    
+}
+
+.daily-item-container {
+    flex: 1;
+    border: 1px solid black;
+}
+
+.daily-weather-container {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.day {
+    display: block;
+}
+
+.max-wave-height label {
+    display: block;
+}
+
+.surf-daily-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.icon-small {
+    width: 40px
+}
+
+.title {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
