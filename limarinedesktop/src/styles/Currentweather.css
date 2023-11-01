@@ -1,7 +1,6 @@
 .current-conditions-container {
     display: flex;
     justify-content: center;
-    
 }
 
 .current-wind {
@@ -11,6 +10,12 @@
 .current-wind span {
     height: 50px;
 }
+
+.hour {
+    margin-right: 5px;
+}
+
+
 
 
 

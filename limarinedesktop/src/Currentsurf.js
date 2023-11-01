@@ -28,6 +28,8 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
 
         return timeValue;
     }
+
+    
     
     
   return (
@@ -59,19 +61,19 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
                 </div>
                 <div className='daily-high-tide'>
                     <h5>High</h5>
-                    <p><strong>{Number(tideHiLo.predictions[0].v).toFixed(1)}ft</strong></p>
-                    <p>{convertTime((tideHiLo.predictions[0].t).substr(10))}</p>
+                    <p><strong>{Number((tideHiLo.predictions[0].type === 'H' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).v).toFixed(1)}ft</strong></p>
+                    <p>{convertTime(((tideHiLo.predictions[0].type === 'H' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).t).substr(10))}</p>
 
-                    <p><strong>{Number(tideHiLo.predictions[2].v).toFixed(1)}ft</strong></p>
-                    <p>{convertTime((tideHiLo.predictions[2].t).substr(10))}</p>
+                    <p><strong>{Number((tideHiLo.predictions[2].type === 'H' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).v).toFixed(1)}ft</strong></p>
+                    <p>{convertTime(((tideHiLo.predictions[2].type === 'H' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).t).substr(10))}</p>
                 </div>
                 <div className='daily-low-tide'>
                     <h5>Low</h5>
-                    <p><strong>{Number(tideHiLo.predictions[1].v).toFixed(1)}ft</strong></p>      
-                    <p>{convertTime((tideHiLo.predictions[1].t).substr(10))}</p>
+                    <p><strong>{Number((tideHiLo.predictions[0].type === 'L' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).v).toFixed(1)}ft</strong></p>      
+                    <p>{convertTime(((tideHiLo.predictions[0].type === 'L' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).t).substr(10))}</p>
 
-                    <p><strong>{Number(tideHiLo.predictions[3].v).toFixed(1)}ft</strong></p>      
-                    <p>{convertTime((tideHiLo.predictions[3].t).substr(10))}</p>      
+                    <p><strong>{Number((tideHiLo.predictions[2].type === 'L' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).v).toFixed(1)}ft</strong></p>      
+                    <p>{convertTime(((tideHiLo.predictions[2].type === 'L' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).t).substr(10))}</p>      
                 </div>
             </div>
         </div>

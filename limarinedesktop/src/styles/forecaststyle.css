@@ -1,0 +1,26 @@
+.wave-forecast {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.weather-forecast {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.daily-item-container {
+    background-color: lightgray;
+}
+
+.max-wave-height {
+    text-align: center;
+}
+
+.daily-item {
+    text-align: center;
+}
+
+.icon-small {
+    width: 40px;
+}

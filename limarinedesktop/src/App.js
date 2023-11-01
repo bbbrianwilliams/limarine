@@ -19,7 +19,9 @@ function App() {
 
   let currentTime = new Date();
   let currentHour = currentTime.getHours();
-  let currentDate = currentTime.toLocaleDateString();
+  let currentDateString = ('0' + currentTime.getDate()).slice(-2) + '/'
+  + ('0' + (currentTime.getMonth()+1)).slice(-2) + '/'
+  + currentTime.getFullYear();
   
 
 
@@ -32,8 +34,8 @@ function App() {
       const currentWeatherFetch = fetch(`${WEATHER_API_URL}weather?lat=${currentSpot.lat}&lon=${currentSpot.lon}&appid=${WEATHER_API_KEY}&units=imperial`);
       const forecastWeatherFetch = fetch(`${WEATHER_API_URL}forecast?lat=${currentSpot.lat}&lon=${currentSpot.lon}&appid=${WEATHER_API_KEY}&units=imperial`);
       const currentSurfFetch = fetch(`${SURF_INFO_API}latitude=${currentSpot.lat}&longitude=${currentSpot.lon}&hourly=wave_height,wave_period,swell_wave_height,swell_wave_direction,swell_wave_period&daily=wave_height_max&length_unit=imperial&timezone=America%2FNew_York`);
-      const currentTideFetch = fetch(`${TIDE_API_URL}begin_date=${currentDate}&range=96&station=${currentSpot.stationId}&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=60&units=english&application=DataAPI_Sample&format=json`);
-      const tideHiLo = fetch(`${TIDE_API_URL}begin_date=${currentDate}&range=120&station=${currentSpot.stationId}&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=hilo&units=english&application=DataAPI_Sample&format=json`);
+      const currentTideFetch = fetch(`${TIDE_API_URL}begin_date=${currentDateString}&range=96&station=${currentSpot.stationId}&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=60&units=english&application=DataAPI_Sample&format=json`);
+      const tideHiLo = fetch(`${TIDE_API_URL}begin_date=${currentDateString}&range=120&station=${currentSpot.stationId}&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=hilo&units=english&application=DataAPI_Sample&format=json`);
 
       Promise.all([currentWeatherFetch, forecastWeatherFetch, currentSurfFetch, currentTideFetch, tideHiLo])
       .then(async (response) => {
@@ -56,7 +58,8 @@ function App() {
 
   
 
-  
+  console.log(tideHiLo);
+
   return (
     <>
     <Header onClickChange={handleOnClickChange}/>
