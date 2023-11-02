@@ -1,26 +1,28 @@
-.wave-forecast {
+/*Styles moved inline to JSX*/
+
+/* .wave-forecast {
     display: flex;
-    justify-content: space-evenly;
-}
+    justify-content: center;
+} */
 
-.weather-forecast {
+/* .weather-forecast {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
-}
+} */
 
-.daily-item-container {
-    background-color: lightgray;
-}
-
-.max-wave-height {
+/* .daily-item {
+    width: 100px;
     text-align: center;
-}
+    margin: 10px 110px;
+} */
 
-.daily-item {
+/* .max-wave-height {
     text-align: center;
-}
+    margin: 10px 100px;
+} */
 
-.icon-small {
+
+/* .icon-small {
     width: 40px;
-}
+} */

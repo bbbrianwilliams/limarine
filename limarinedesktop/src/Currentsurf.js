@@ -1,11 +1,28 @@
 import React from 'react'
 import './styles/Currentsurf.css'
 import { spotData } from './Spotsdata';
+import Currentweather from './Currentweather';
 
 const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
 
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
+
+    let highTideData = {
+        time: '',
+        value: '',
+    };
+
+    let lowTideData = {
+        time: '',
+        value: '',  
+     };
+
+     let currentTideData = {
+        time: '',
+        value: '',
+     }
+
 
     
     const convertTime = (t) => {
@@ -29,8 +46,66 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
         return timeValue;
     }
 
-    
-    
+    function getCurrentTide() {
+        
+        currentTideData.value = tideData.predictions[currentHour].v;
+        currentTideData.time = tideData.predictions[currentHour].t;
+
+        return currentTideData;
+    }
+
+
+
+    function getHighTide(i) {
+        let highTide = tideHiLo.predictions[i].type === 'H';
+
+            if (highTide) {
+                highTideData.value = Number(tideHiLo.predictions[i].v).toFixed(1);
+                highTideData.time = (tideHiLo.predictions[i].t).substr(10);
+
+            }
+
+            else {
+                i++;
+                highTideData.value = Number(tideHiLo.predictions[i].v).toFixed(1);
+                highTideData.time = (tideHiLo.predictions[i].t).substr(10);
+            }
+
+            return highTideData;
+            
+        }
+
+    function getLowTide(i) {
+        let lowTide = tideHiLo.predictions[i].type === 'L';
+
+            if (lowTide) {
+                lowTideData.value = Number(tideHiLo.predictions[i].v).toFixed(1);
+                lowTideData.time = (tideHiLo.predictions[i].t).substr(10);
+            }
+
+            else {
+                i++;
+                lowTideData.value = Number(tideHiLo.predictions[i].v).toFixed(1);
+                lowTideData.time = (tideHiLo.predictions[i].t).substr(10);
+            }
+
+            return lowTideData;
+            console.log(lowTideData);
+            
+        }
+
+        let tideIsRising = true;
+
+    /* function isTideRising() {
+        if(currentTideData.value > lowTideData.value && currentTideData.time) {
+            tideIsRising = true;
+        } else {
+            tideIsRising = false;
+        }
+    } */
+            
+        
+    console.log();
     
   return (
     <>
@@ -44,7 +119,7 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
         </div>
         <div className='swell-info'>
             <div className='info-header'>
-                <h2>Swell Info</h2>
+                <h2>Swell</h2>
             </div>
             <p>{surfData.hourly.swell_wave_height[currentHour].toFixed(1)}ft @ {Math.round(surfData.hourly.swell_wave_period[currentHour])}s from {surfData.hourly.swell_wave_direction[currentHour]}°</p>
         </div>
@@ -55,25 +130,25 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
             <div className='current-hi-lo'>
                 <div className='daily-current'>
                     <h5>Current</h5>
-                    <p><strong>{Number(tideData.predictions[currentHour].v).toFixed(1)}ft</strong></p>
+                    <p><strong>{Number(getCurrentTide().value).toFixed(1)}ft</strong></p>
                     <p>as of</p>
-                    <p>{convertTime((tideData.predictions[currentHour].t).substr(10))}</p>
+                    <p>{convertTime((getCurrentTide().time).substring(10))}</p>
                 </div>
                 <div className='daily-high-tide'>
                     <h5>High</h5>
-                    <p><strong>{Number((tideHiLo.predictions[0].type === 'H' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).v).toFixed(1)}ft</strong></p>
-                    <p>{convertTime(((tideHiLo.predictions[0].type === 'H' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).t).substr(10))}</p>
+                    <p><strong>{getHighTide(0).value}ft</strong></p>
+                    <p>{convertTime(getHighTide(0).time)}</p>
 
-                    <p><strong>{Number((tideHiLo.predictions[2].type === 'H' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).v).toFixed(1)}ft</strong></p>
-                    <p>{convertTime(((tideHiLo.predictions[2].type === 'H' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).t).substr(10))}</p>
+                    <p><strong>{getHighTide(2).value}ft</strong></p>
+                    <p>{convertTime(getHighTide(2).time)}</p>
                 </div>
                 <div className='daily-low-tide'>
                     <h5>Low</h5>
-                    <p><strong>{Number((tideHiLo.predictions[0].type === 'L' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).v).toFixed(1)}ft</strong></p>      
-                    <p>{convertTime(((tideHiLo.predictions[0].type === 'L' ? tideHiLo.predictions[0] : tideHiLo.predictions[1]).t).substr(10))}</p>
+                    <p><strong>{getLowTide(0).value}ft</strong></p>      
+                    <p>{convertTime(getLowTide(0).time)}</p>
 
-                    <p><strong>{Number((tideHiLo.predictions[2].type === 'L' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).v).toFixed(1)}ft</strong></p>      
-                    <p>{convertTime(((tideHiLo.predictions[2].type === 'L' ? tideHiLo.predictions[2] : tideHiLo.predictions[3]).t).substr(10))}</p>      
+                    <p><strong>{getLowTide(2).value}ft</strong></p>      
+                    <p>{convertTime(getLowTide(2).time)}</p>      
                 </div>
             </div>
         </div>

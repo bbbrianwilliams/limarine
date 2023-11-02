@@ -58,14 +58,25 @@ function App() {
 
   
 
-  console.log(tideHiLo);
-
   return (
     <>
     <Header onClickChange={handleOnClickChange}/>
-    {surfData && <Currentsurf nameData={spotName} surfData={surfData} tideData={tideData} tideHiLo={tideHiLo}/>} 
+
+    {surfData && <Currentsurf 
+    nameData={spotName} 
+    surfData={surfData} 
+    tideData={tideData} 
+    tideHiLo={tideHiLo}
+    />} 
+
     {currentWeather && <Currentweather data={currentWeather}/>}
-    {forecastWeather && <Forecast data={forecastWeather} surfData={surfData} tideData={tideData} tideHiLo={tideHiLo}/>}
+    {forecastWeather && <Forecast 
+    data={forecastWeather} 
+    surfData={surfData} 
+    tideData={tideData} 
+    tideHiLo={tideHiLo}
+    />}
+
     <Footer />
     </>
   );
