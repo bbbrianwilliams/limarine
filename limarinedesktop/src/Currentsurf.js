@@ -8,6 +8,18 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
 
+    const {
+        hourly: 
+        {
+            wave_height: waveHeight,
+            swell_wave_period: swellPeriod,
+            swell_wave_height: swellHeight,
+            swell_wave_direction: swellDirection,
+        },
+    } = surfData;
+
+    
+
     let highTideData = {
         time: '',
         value: '',
@@ -94,7 +106,7 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
             
         }
 
-        let tideIsRising = true;
+        //let tideIsRising = true;
 
     /* function isTideRising() {
         if(currentTideData.value > lowTideData.value && currentTideData.time) {
@@ -105,7 +117,7 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
     } */
             
         
-    console.log();
+    console.log(tideHiLo);
     
   return (
     <>
@@ -115,13 +127,13 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
             <div className='info-header'>
                 <h2>Surf Height</h2>
             </div>
-            <p>{surfData.hourly.wave_height[currentHour].toFixed(1)}ft</p>
+            {<p>{(waveHeight[currentHour]).toFixed(1)}ft</p>}
         </div>
         <div className='swell-info'>
             <div className='info-header'>
                 <h2>Swell</h2>
             </div>
-            <p>{surfData.hourly.swell_wave_height[currentHour].toFixed(1)}ft @ {Math.round(surfData.hourly.swell_wave_period[currentHour])}s from {surfData.hourly.swell_wave_direction[currentHour]}°</p>
+            <p>{(swellHeight[currentHour]).toFixed(1)}ft @ {Math.round(swellPeriod[currentHour])}s from {swellDirection[currentHour]}°</p>
         </div>
         <div className='tide-info'>
             <div className='info-header'>

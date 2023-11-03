@@ -5,6 +5,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 const Currentweather = ({data}) => {
 
+
     let windDirection;
 
     function getWindDirection(d){
