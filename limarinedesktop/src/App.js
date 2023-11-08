@@ -3,9 +3,10 @@ import Footer from "./Footer";
 import Currentweather from "./Currentweather";
 import Forecast from "./Forecast";
 import Currentsurf from "./Currentsurf";
-import { useState } from "react";
+import { useState, CSSProperties } from "react";
 import { SURF_INFO_API, WEATHER_API_KEY, WEATHER_API_URL, TIDE_API_URL } from "./Api";
 import { spotData } from "./Spotsdata";
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [surfData, setSurfData] = useState('')
   const [tideData, setTideData] = useState('')
   const [tideHiLo, setTideHiLo] = useState('')
+  const [loading, setLoading] = useState(false)
 
   let currentTime = new Date();
   let currentHour = currentTime.getHours();
@@ -26,6 +28,8 @@ function App() {
 
 
     const handleOnClickChange = (spot) => {
+
+      setLoading(true);
 
       const currentSpot = spot;
       setSpotName(currentSpot.name)
@@ -52,25 +56,32 @@ function App() {
       setTideHiLo(tideHiLoResponse);
       
     })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+  
+      .finally(() => setLoading(false))
 
   }
 
+  
   
 
   return (
     <>
     <Header onClickChange={handleOnClickChange}/>
 
-    {surfData && <Currentsurf 
+    {loading ? <ClipLoader
+    size={'150px'}
+    cssOverride={{margin: '250px 625px'}}
+    /> : surfData && <Currentsurf 
     nameData={spotName} 
     surfData={surfData} 
     tideData={tideData} 
     tideHiLo={tideHiLo}
     />} 
 
-    {currentWeather && <Currentweather data={currentWeather}/>}
-    {forecastWeather && <Forecast 
+    {loading ? null : currentWeather && <Currentweather data={currentWeather}/>}
+
+    {loading ? null : forecastWeather && <Forecast 
     data={forecastWeather} 
     surfData={surfData} 
     tideData={tideData} 
