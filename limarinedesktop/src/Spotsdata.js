@@ -1,4 +1,4 @@
-//Array of spot objects
+//Array of spot objects containing different surf spot information
 
     export const spotData = [ 
     {

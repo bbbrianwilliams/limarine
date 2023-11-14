@@ -3,10 +3,10 @@ import Footer from "./Footer";
 import Currentweather from "./Currentweather";
 import Forecast from "./Forecast";
 import Currentsurf from "./Currentsurf";
-import { useState, CSSProperties } from "react";
+import { useState } from "react";
 import { SURF_INFO_API, WEATHER_API_KEY, WEATHER_API_URL, TIDE_API_URL } from "./Api";
-import { spotData } from "./Spotsdata";
 import ClipLoader from "react-spinners/ClipLoader";
+import { spotData } from "./Spotsdata";
 
 
 function App() {
@@ -21,20 +21,24 @@ function App() {
 
   let currentTime = new Date();
   let currentHour = currentTime.getHours();
-  let currentDateString = ('0' + currentTime.getDate()).slice(-2) + '/'
-  + ('0' + (currentTime.getMonth()+1)).slice(-2) + '/'
-  + currentTime.getFullYear();
+  let currentDateString = currentTime.getFullYear() + ('0' + (currentTime.getMonth()+1)).slice(-2) + ('0' + currentTime.getDate()).slice(-2);
   
 
+//Define click handler
 
     const handleOnClickChange = (spot) => {
 
+//While loading data, display spinner
+
       setLoading(true);
+
+//Set spot name
 
       const currentSpot = spot;
       setSpotName(currentSpot.name)
 
-//fetch data
+//fetch data for current spot
+
       const currentWeatherFetch = fetch(`${WEATHER_API_URL}weather?lat=${currentSpot.lat}&lon=${currentSpot.lon}&appid=${WEATHER_API_KEY}&units=imperial`);
       const forecastWeatherFetch = fetch(`${WEATHER_API_URL}forecast?lat=${currentSpot.lat}&lon=${currentSpot.lon}&appid=${WEATHER_API_KEY}&units=imperial`);
       const currentSurfFetch = fetch(`${SURF_INFO_API}latitude=${currentSpot.lat}&longitude=${currentSpot.lon}&hourly=wave_height,wave_period,swell_wave_height,swell_wave_direction,swell_wave_period&daily=wave_height_max&length_unit=imperial&timezone=America%2FNew_York`);
@@ -63,23 +67,41 @@ function App() {
   }
 
   
-  
 
   return (
     <>
     <Header onClickChange={handleOnClickChange}/>
 
-    {loading ? <ClipLoader
-    size={'150px'}
-    cssOverride={{margin: '250px 625px'}}
-    /> : surfData && <Currentsurf 
+  {/* Display spinner while data is being fetched */}
+
+    {loading ? 
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '500px',
+      }}>
+      <ClipLoader
+        size={'150px'}
+        speedMultiplier={.2}
+      />
+    </div>
+    
+
+   : surfData && <Currentsurf 
     nameData={spotName} 
     surfData={surfData} 
     tideData={tideData} 
     tideHiLo={tideHiLo}
     />} 
 
+
+    {/* Current weather component */}
+
     {loading ? null : currentWeather && <Currentweather data={currentWeather}/>}
+
+
+    {/* Weather Forecast component */}
 
     {loading ? null : forecastWeather && <Forecast 
     data={forecastWeather} 

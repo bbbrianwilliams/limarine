@@ -1,15 +1,18 @@
 import React from 'react'
 import './styles/forecaststyle.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+
 
 const Forecast = ({data, surfData, tideData, tideHiLo}) => {
+
+  //Define days in week and determine which days need to be displayed in forecast
     
     const WEEK_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const dayInWeek = new Date().getDay();
     const forecastDays = WEEK_DAYS.slice(dayInWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInWeek));
     
+
+//filter data returned to map over specific times/values to display in forecast
 
     let filteredIdx = [4, 12, 20];
 

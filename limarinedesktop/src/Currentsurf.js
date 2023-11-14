@@ -1,13 +1,16 @@
 import React from 'react'
 import './styles/Currentsurf.css'
-import { spotData } from './Spotsdata';
-import Currentweather from './Currentweather';
+
+
 
 const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
 
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
 
+
+
+//Destructure properties that will be used in forecast
     const {
         hourly: 
         {
@@ -18,7 +21,7 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
         },
     } = surfData;
 
-    
+//Define objects that will contain tide data
 
     let highTideData = {
         time: '',
@@ -36,7 +39,8 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
      }
 
 
-    
+// Convert time to easy-to-read format
+
     const convertTime = (t) => {
         t = t.split(":");
         let h = Number(t[0]);
@@ -48,7 +52,7 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
             timeValue = h;
         } else if(h > 12) {
             timeValue = (h - 12);
-        } else if (h == 0) {
+        } else if (h === 0) {
             timeValue = "12";
         }
 
@@ -57,6 +61,9 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
 
         return timeValue;
     }
+
+    
+//Get currebt/high/low tide value and time
 
     function getCurrentTide() {
         
@@ -102,22 +109,10 @@ const Currentsurf = ({surfData, tideData, tideHiLo, nameData}) => {
             }
 
             return lowTideData;
-            console.log(lowTideData);
+            
             
         }
-
-        //let tideIsRising = true;
-
-    /* function isTideRising() {
-        if(currentTideData.value > lowTideData.value && currentTideData.time) {
-            tideIsRising = true;
-        } else {
-            tideIsRising = false;
-        }
-    } */
             
-        
-    console.log(tideHiLo);
     
   return (
     <>
