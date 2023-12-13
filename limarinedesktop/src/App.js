@@ -47,17 +47,17 @@ function App() {
 
       Promise.all([currentWeatherFetch, forecastWeatherFetch, currentSurfFetch, currentTideFetch, tideHiLo])
       .then(async (response) => {
-      const weatherResponse = await response[0].json();
-      const forecastResponse = await response[1].json();
-      const surfResponse = await response[2].json();
-      const tideResponse = await response[3].json();
-      const tideHiLoResponse = await response[4].json();
+        const weatherResponse = await response[0].json();
+        const forecastResponse = await response[1].json();
+        const surfResponse = await response[2].json();
+        const tideResponse = await response[3].json();
+        const tideHiLoResponse = await response[4].json();
 
-      setCurrentWeather(weatherResponse);
-      setForecastWeather(forecastResponse);
-      setSurfData(surfResponse);
-      setTideData(tideResponse);
-      setTideHiLo(tideHiLoResponse);
+        setCurrentWeather(weatherResponse);
+        setForecastWeather(forecastResponse);
+        setSurfData(surfResponse);
+        setTideData(tideResponse);
+        setTideHiLo(tideHiLoResponse);
       
     })
       .catch((err) => console.log(err))
@@ -65,6 +65,8 @@ function App() {
       .finally(() => setLoading(false))
 
   }
+
+  
 
   
 

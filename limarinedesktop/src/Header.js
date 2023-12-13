@@ -4,15 +4,11 @@ import { spotData } from "./Spotsdata";
 
 
 const Header = ({onClickChange}) => {
-
-const [active, setActive] = useState(false)
-
+  
   const handleClick = (spot) => {
 
     onClickChange(spot)
 
-    setActive(!active)
-    
   }
 
   return (
@@ -26,12 +22,13 @@ const [active, setActive] = useState(false)
     </div>
   
     <div className='navbar-container'>
-    <nav>
-        <button className='rkwy-btn' onClick={(e) => handleClick(spotData[0])}>Rockaway</button>
-        <button className='lb-btn' onClick={(e) => handleClick(spotData[1])}>Long Beach</button>
-        <button className='gilgo-btn' onClick={(e) => handleClick(spotData[2])}>Gilgo</button>
-        <button className='mtk-btn' onClick={(e) => handleClick(spotData[3])}>Montauk</button>
-    </nav>
+      <nav>
+          {spotData.map((spot, id) => {
+            return (
+              <button key={id} onClick={(e) => handleClick(spot)}>{spot.name}</button>
+            )
+          })}
+      </nav>
     </div>
     
 

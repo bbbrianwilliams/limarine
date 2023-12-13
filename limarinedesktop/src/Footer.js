@@ -11,7 +11,7 @@ const Footer = () => {
         <div className='left-section'></div>
         <div className='middle-section'>
           <ul>
-            <li>&copy; {currentYear} LI Marine, Inc.</li>
+            <li>&copy; {currentYear} LI Marine</li>
             <li>About</li>
             <li>Contact</li>
           </ul>
